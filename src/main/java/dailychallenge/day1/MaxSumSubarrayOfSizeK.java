@@ -10,16 +10,15 @@ public class MaxSumSubarrayOfSizeK {
     }
     public static int maxSubarraySum(int[] arr, int k) {
 
-        if(arr.length < k)
+        if(k > arr.length)
         {
             return -1;
         }
-
-        int maxSum = Integer.MIN_VALUE;
-
-        int sum = 0;
+        int max = Integer.MIN_VALUE;
 
         int start = 0;
+
+        int sum = 0;
 
         for(int end = 0; end < arr.length; end++)
         {
@@ -29,13 +28,13 @@ public class MaxSumSubarrayOfSizeK {
 
             if(windowSize == k)
             {
-                maxSum = Math.max(sum, maxSum);
+                max = Math.max(max, sum);
 
                 sum -= arr[start];
 
                 start++;
             }
         }
-        return maxSum;
+        return max;
     }
 }
