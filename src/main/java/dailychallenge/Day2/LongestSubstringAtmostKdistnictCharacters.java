@@ -15,8 +15,11 @@ public class LongestSubstringAtmostKdistnictCharacters {
             return 0;
         }
         int start = 0;
+
         int maxLen = 0;
+
         int[] freq = new int[256];
+
         int distinct = 0;
 
         for(int i =0; i<s.length(); i++)
