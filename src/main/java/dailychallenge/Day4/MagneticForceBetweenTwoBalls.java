@@ -10,46 +10,46 @@ public class MagneticForceBetweenTwoBalls {
 
         System.out.print(maxDistance(position, k));
     }
-    public static int maxDistance(int[] position, int m) {
+    public static int maxDistance(int[] position, int k) {
 
         Arrays.sort(position);
 
-        int low = 1;
+        int left = 1;
 
-        int high = position[position.length-1] - position[0];
+        int rigth = position[position.length-1] - position[0];
 
         int res = 0;
 
-        while(low <= high)
+        while(left <= rigth)
         {
-            int mid = (low + high) / 2;
+            int mid = left + (rigth - left) / 2;
 
-            if(isSafe(position, m, mid))
+            if(lessOrMore(position, k, mid))
             {
-                low = mid + 1;
+                left = mid + 1;
 
                 res = mid;
             }
             else
             {
-                high = mid - 1;
+                rigth = mid - 1;
             }
         }
         return res;
     }
-    private static boolean isSafe(int[] nums, int k, int mid)
+    private static boolean lessOrMore(int[] position, int k, int target)
     {
         int count = 1;
 
-        int lastPos = nums[0];
+        int lastPos = position[0];
 
-        for(int i = 1; i < nums.length; i++)
+        for(int i = 1; i < position.length; i++)
         {
-            if(nums[i] - lastPos >= mid)
+            if(position[i] - lastPos >= target)
             {
                 count++;
 
-                lastPos = nums[i];
+                lastPos = position[i];
             }
         }
         return count >= k;
