@@ -7,6 +7,7 @@ public class SearchFirstAndLastOccurence {
     public static void main(String[] args) {
 
         int[] nums = {5,7,7,8,8,10};
+
         int target = 8;
 
         System.out.println(Arrays.toString(searchRange(nums, target)));
@@ -16,8 +17,9 @@ public class SearchFirstAndLastOccurence {
 
         int[] res = {-1, -1};
 
-        res[0] = findBoundary(nums, target, true);   // first occurrence
-        res[1] = findBoundary(nums, target, false);  // last occurrence
+        res[0] = findBoundary(nums, target, true);
+
+        res[1] = findBoundary(nums, target, false);
 
         return res;
     }
@@ -48,7 +50,6 @@ public class SearchFirstAndLastOccurence {
                 }
             }
         }
-
         return result;
     }
 }
