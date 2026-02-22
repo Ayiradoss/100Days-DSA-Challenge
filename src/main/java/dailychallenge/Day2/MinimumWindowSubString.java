@@ -41,7 +41,7 @@ public class MinimumWindowSubString {
 
             while(count == 0)
             {
-                int windowSize = end - left + 1;
+                int windowSize = end - start + 1;
 
                 if(windowSize < minLen)
                 {
@@ -58,8 +58,8 @@ public class MinimumWindowSubString {
                 {
                     count++;
                 }
-                left++;
             }
+            left++;
         }
         return minLen == Integer.MAX_VALUE ? "" : s.substring(start, start + minLen);
     }

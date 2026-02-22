@@ -7,6 +7,7 @@ import java.util.Queue;
 
 public class FirstNegativeInEveryWindowOfSizeK {
     public static void main(String[] args) {
+
         int[] arr = {-8, 2, 3, -6, 10};
 
         int k = 2;

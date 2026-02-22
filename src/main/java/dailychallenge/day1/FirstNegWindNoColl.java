@@ -3,6 +3,7 @@ package dailychallenge.Day1;
 public class FirstNegWindNoColl {
     public static void main(String[] args) {
         int[] arr = {-8, 2, 3, -6, 10};
+
         int k = 2;
 
         firstNegInt(arr, k);
@@ -11,6 +12,7 @@ public class FirstNegWindNoColl {
     public static void firstNegInt(int arr[], int k) {
 
         if (k <= 0 || arr.length < k) {
+            System.out.print(0);
             return;
         }
 
@@ -42,7 +44,7 @@ public class FirstNegWindNoColl {
                 }
                 else
                 {
-                    System.out.print(0);
+                    System.out.print(0+" ");
                 }
                 start++;
             }

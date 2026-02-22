@@ -2,7 +2,7 @@ package dailychallenge.Day1;
 
 public class FruitsIntoBaskets {
     public static void main(String[] args) {
-        int[] arr = {1,3,3,2,0,0};
+        int[] arr = {1,1,0,0,3};
 
         System.out.print(totalFruit(arr));
     }

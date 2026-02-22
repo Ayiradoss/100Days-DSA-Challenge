@@ -14,6 +14,7 @@ public class LongestSubstringAtmostKdistnictCharacters {
         {
             return 0;
         }
+
         int start = 0;
 
         int maxLen = 0;
