@@ -18,8 +18,7 @@ public class LongestRepeatingCharacterReplacement {
 
         int maxLen = 0;
 
-        for(int end = 0; end < s.length(); end++)
-        {
+        for(int end = 0; end < s.length(); end++) {
             freq[s.charAt(end) - 'A']++;
 
             maxFreq = Math.max(maxFreq, freq[s.charAt(end) - 'A']);
@@ -34,7 +33,6 @@ public class LongestRepeatingCharacterReplacement {
 
                 windowSize = end - start + 1;
             }
-
             maxLen = Math.max(maxLen, windowSize);
         }
         return maxLen;

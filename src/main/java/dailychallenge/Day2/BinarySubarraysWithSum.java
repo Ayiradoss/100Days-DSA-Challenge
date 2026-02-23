@@ -2,7 +2,7 @@ package dailychallenge.Day2;
 
 public class BinarySubarraysWithSum {
     public static void main(String[] args) {
-        int[] nums = {1,0,1,0,1};
+        int[] nums = {1,0,1,0,0,1};
 
         int goal = 2;
 
@@ -34,7 +34,7 @@ public class BinarySubarraysWithSum {
 
                 start++;
             }
-            count += (end - start + 1);
+            count += (end - start +1);
         }
         return count;
     }
