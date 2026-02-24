@@ -6,7 +6,7 @@ public class XPattern {
 
     public static void main(String[] args) {
 
-            String word = "break";
+            String word = "hateall";
 
             int n = word.length();
 
