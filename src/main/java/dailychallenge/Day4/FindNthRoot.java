@@ -9,50 +9,51 @@ public class FindNthRoot {
         System.out.print(nthRoot(n, m));
     }
     public static int nthRoot(int n, int m) {
-
         if(m == 0)
         {
             return 0;
         }
 
-        int left = 1;
+        int left = 0;
 
         int rigth = m;
 
-        while(left <= rigth)
+        while (left <= rigth)
         {
             int mid = left + (rigth - left) / 2;
 
-            int solve = power(mid, n, m);
+            int power = solve(n, m, mid);
 
-            if(solve == 1)
+            if(power == 1)
             {
                 return mid;
             }
-            else if(solve == 0)
+            else if(power == 2)
             {
-                left = mid + 1;
+                rigth = mid - 1;
             }
             else
             {
-                rigth = mid - 1;
+                left = mid + 1;
             }
         }
         return -1;
     }
-    private static int power(int mid, int n, int m)
+
+    private static int solve(int n, int m, int target)
     {
-        long res = 1;
+        int res = 1;
 
         for(int i = 1; i <= n; i++)
         {
-            res *= mid;
+            res *= target;
 
             if(res > m)
             {
                 return 2;
             }
         }
+
         if(res == m)
         {
             return 1;

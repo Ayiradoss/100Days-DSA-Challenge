@@ -2,7 +2,7 @@ package dailychallenge.Day3;
 
 public class SearchInRotatedSortedArray {
     public static void main(String[] args) {
-        int[] nums = {3,1};
+        int[] nums = {6,7,8,9,3,4,5};
 
         int target = 3;
 

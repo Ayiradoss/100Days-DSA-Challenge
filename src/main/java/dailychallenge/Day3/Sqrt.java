@@ -3,7 +3,7 @@ package dailychallenge.Day3;
 public class Sqrt {
     public static void main(String[] args)
     {
-        int x = 4;
+        int x = 64;
 
         System.out.print(mySqrt(x));
     }

@@ -12,18 +12,19 @@ public class FirstNegativeInEveryWindowOfSizeK {
 
         int k = 2;
 
-        System.out.print(firstNegInt(arr, k));
+        firstNegInt(arr, k);
     }
-    public static List<Integer> firstNegInt(int arr[], int k) {
+    public static void firstNegInt(int arr[], int k) {
 
         if(arr.length < k)
         {
-            return new ArrayList<>();
+            System.out.println(0);
+            return;
         }
 
         Queue<Integer> qu = new LinkedList<>();
 
-        List<Integer> list = new ArrayList<>();
+        //List<Integer> list = new ArrayList<>();
 
         int start = 0;
 
@@ -46,11 +47,13 @@ public class FirstNegativeInEveryWindowOfSizeK {
 
                 if(qu.isEmpty())
                 {
-                   list.add(0);
+                   //list.add(0);
+                    System.out.print(0+" ");
                 }
                 else
                 {
-                    list.add(arr[qu.peek()]);
+                    //list.add(arr[qu.peek()]);
+                    System.out.print(arr[qu.peek()] +" ");
                 }
                 if(!qu.isEmpty() && qu.peek() == start)
                 {
@@ -59,6 +62,5 @@ public class FirstNegativeInEveryWindowOfSizeK {
                 start++;
             }
         }
-        return list;
     }
 }

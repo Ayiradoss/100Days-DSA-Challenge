@@ -2,10 +2,12 @@ package dailychallenge.Day4;
 
 public class MedianInRowWiseSortedArray {
     public static void main(String[] args) {
+
         int[][] mat = {{1, 3, 5},{2, 6, 9},{3, 6, 9}};
 
         System.out.print(median(mat));
     }
+
     private static int median(int[][] mat)
     {
         int r = mat.length;
@@ -46,6 +48,7 @@ public class MedianInRowWiseSortedArray {
         }
         return low;
     }
+
     private static int lessOrEqual(int[] row, int c, int target)
     {
         int left = 0;

@@ -14,21 +14,21 @@ public class MagneticForceBetweenTwoBalls {
 
         Arrays.sort(position);
 
-        int left = 1;
+        int res = 0;
+
+        int left = 0;
 
         int rigth = position[position.length-1] - position[0];
 
-        int res = 0;
-
-        while(left <= rigth)
+        while (left <= rigth)
         {
             int mid = left + (rigth - left) / 2;
 
-            if(lessOrMore(position, k, mid))
+            if(lessOrMore(position, mid, k))
             {
-                left = mid + 1;
-
                 res = mid;
+
+                left = mid + 1;
             }
             else
             {
@@ -37,7 +37,7 @@ public class MagneticForceBetweenTwoBalls {
         }
         return res;
     }
-    private static boolean lessOrMore(int[] position, int k, int target)
+    private static boolean lessOrMore(int[] position, int mid, int k)
     {
         int count = 1;
 
@@ -45,7 +45,7 @@ public class MagneticForceBetweenTwoBalls {
 
         for(int i = 1; i < position.length; i++)
         {
-            if(position[i] - lastPos >= target)
+            if(position[i] - lastPos >= mid)
             {
                 count++;
 
