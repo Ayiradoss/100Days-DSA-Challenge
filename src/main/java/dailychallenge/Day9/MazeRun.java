@@ -26,10 +26,10 @@ public class MazeRun {
         }
         visited[i][j] = true;
 
-        solve(maze, i+1, j, s+"D", visited);
-        solve(maze, i, j+1, s+"R", visited);
-        solve(maze, i-1, j, s+"U", visited);
-        solve(maze, i, j-1, s+"L", visited);
+        solve(maze, i+1, j, s+"Down", visited);
+        solve(maze, i, j+1, s+"Rigth", visited);
+        solve(maze, i-1, j, s+"Up", visited);
+        solve(maze, i, j-1, s+"Left", visited);
 
         visited[i][j] = false;
     }

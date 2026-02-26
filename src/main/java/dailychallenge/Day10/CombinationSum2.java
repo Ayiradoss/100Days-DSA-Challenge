@@ -9,39 +9,33 @@ public class CombinationSum2 {
 
         int target = 8;
 
-        System.out.print(combinationSum2(nums, target));
-    }
-    public static List<List<Integer>> combinationSum2(int[] nums, int target) {
         sort(nums);
 
-        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
 
-        bt(list, nums, target, new ArrayList<>(), 0);
-
-        return list;
+        bt(list, nums, target,0);
     }
-    private static void bt(List<List<Integer>> list, int[] nums, int target, List<Integer> tempList, int start)
+    private static void bt(List<Integer> list, int[] nums, int target, int start)
     {
         if(target == 0)
         {
-            list.add(new ArrayList<>(tempList));
+            System.out.print(list+" ");
         }
         if(target < 0)
         {
             return;
         }
-
-        for(int i = start; i<nums.length; i++)
+        for(int i = start; i< nums.length;i++)
         {
             if(i > start && nums[i] == nums[i-1])
             {
                 continue;
             }
-            tempList.add(nums[i]);
+            list.add(nums[i]);
 
-            bt(list, nums, target - nums[i], tempList, i+1);
+            bt(list, nums,target - nums[i], i+1);
 
-            tempList.remove(tempList.size() - 1);
+            list.removeLast();
         }
     }
     private static void sort(int[] nums)

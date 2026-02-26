@@ -2,7 +2,7 @@ package dailychallenge.Day9;
 
 public class PermutationOfString {
     public static void main(String[] args) {
-        String str = "KGF";
+        String str = "DAS";
 
         bt(str.toCharArray(), 0);
     }
