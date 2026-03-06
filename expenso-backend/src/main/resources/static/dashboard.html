@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expenso - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="dashboard.html">Expenso</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="add-expense.html">Add Expense</a></li>
+            <li class="nav-item"><a class="nav-link" href="expense-list.html">Expenses</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" id="logoutLink">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title" id="welcome">Welcome</h5>
+              <p class="card-text" id="userEmail"></p>
+            </div>
+          </div>
+          <div class="list-group">
+            <a href="add-expense.html" class="list-group-item list-group-item-action">Add Expense</a>
+            <a href="expense-list.html" class="list-group-item list-group-item-action">View Expenses</a>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row" id="statsRow">
+            <!-- stats cards inserted here -->
+          </div>
+          <div class="card mt-3">
+            <div class="card-body">
+              <h5>Recent Expenses</h5>
+              <div id="recentList">Loading...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+      const user = getUser();
+      if (!user) location.href = 'login.html';
+      document.getElementById('welcome').textContent = `Hello, ${user.name}`;
+      document.getElementById('userEmail').textContent = user.email;
+      document.getElementById('logoutLink').addEventListener('click', (e) => { e.preventDefault(); logout(); });
+
+      async function loadDashboard() {
+        const cats = await fetchCategories();
+        const expenses = await fetchExpenses();
+        const statsRow = document.getElementById('statsRow');
+        statsRow.innerHTML = '';
+        const cardHtml = (title, value) => `\n          <div class="col-md-4">\n            <div class="card text-white bg-secondary mb-3">\n              <div class="card-body">\n                <h6 class="card-title">${title}</h6>\n                <p class="card-text fs-4">${value}</p>\n              </div>\n            </div>\n          </div>`;
+        statsRow.innerHTML += cardHtml('Categories', cats.length);
+        statsRow.innerHTML += cardHtml('Expenses', expenses.length);
+        const total = expenses.reduce((s, e) => s + (parseFloat(e.amount) || 0), 0);
+        statsRow.innerHTML += cardHtml('Total Spent', total.toFixed(2));
+
+        const recent = document.getElementById('recentList');
+        if (expenses.length === 0) recent.textContent = 'No expenses yet.';
+        else {
+          recent.innerHTML = '<ul class="list-group">' + expenses.slice(0,5).map(e => `<li class="list-group-item d-flex justify-content-between align-items-center">${e.title} <span class="badge bg-primary">${e.amount}</span></li>`).join('') + '</ul>';
+        }
+      }
+
+      loadDashboard();
+    </script>
+  </body>
+</html>
